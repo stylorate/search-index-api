@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="0001-search-filter-001" author="jlozano@loquesea.com">
+        <createTable tableName="search_filter">
+            <column name="id" type="varchar(100)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="disabled_date" type="datetime"/>
+            <column name="enable" type="bit(1)"/>
+            <column name="visible" type="bit(1)"/>
+            <column name="name" type="varchar(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branch_id" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branch_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="carrier_id" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="carrier_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="field">
+            <column name="id" type="varchar(100)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="disabled_date" type="datetime"/>
+            <column name="enable" type="bit(1)"/>
+            <column name="visible" type="bit(1)"/>
+            <column name="key_id" type="varchar(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="label_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="label_value" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="filter_id" type="varchar(100)">
+                <constraints foreignKeyName="fk_search_filter_id" references="search_filter(id)"/>
+            </column>
+        </createTable>
+        <createTable tableName="branch">
+            <column name="id" type="varchar(100)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="disabled_date" type="datetime"/>
+            <column name="enable" type="bit(1)"/>
+            <column name="label_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branch_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city_id" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="admin_id" type="varchar(100)">
+<!--                <constraints foreignKeyName="fk_search_filter_id" references="search_filter(id)"/>-->
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

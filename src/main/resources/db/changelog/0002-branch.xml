@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="0002-branch-001" author="jlozano@loquesea.com">
+        <createTable tableName="branch">
+            <column name="id" type="varchar(100)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="disabled_date" type="datetime"/>
+            <column name="enable" type="bit(1)"/>
+            <column name="label_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branch_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city_id" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="admin_id" type="varchar(100)">
+                <!--                <constraints foreignKeyName="fk_search_filter_id" references="search_filter(id)"/>-->
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="0002-branch-002" author="jlozano@loquesea.com">
+        <addColumn tableName="branch">
+            <column name="visible" type="bit(1)"></column>
+        </addColumn>
+
+    </changeSet>
+    <changeSet id="0002-branch-003" author="jlozano@loquesea.com">
+        <dropColumn tableName="branch">
+            <column name="label_name"></column>
+        </dropColumn>
+
+    </changeSet>
+
+</databaseChangeLog>
